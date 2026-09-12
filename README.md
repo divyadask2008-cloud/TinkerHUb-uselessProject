@@ -84,7 +84,7 @@ Not applicable — there is no physical build. The "product" is the web app show
   <source src="demo-video.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
-*Screencast of the exam being taken live (recorded with GNOME Screen Recorder).*
+*Screencast of the exam being taken live (GNOME Screen Recorder).*
 
 # Additional Demos
 - Live preview: run `python3 -m http.server 8000` and open http://localhost:8000
