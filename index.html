@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Useless Computer Exam</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- WELCOME SCREEN -->
+    <div id="welcome-screen" class="screen active">
+        <div class="welcome-bg"></div>
+        <div class="exam-card welcome-card">
+            <div class="exam-logo">💻</div>
+            <h1 class="welcome-title">THE USELESS<br>COMPUTER EXAM</h1>
+            <p class="exam-subtitle">"An examination of absolutely no importance."</p>
+            <div class="exam-ribbon">
+                <span>Official Useless Certification Assessment</span>
+            </div>
+            <button id="start-btn" class="btn btn-primary btn-glow" aria-label="Start the exam">START EXAM →</button>
+            <p class="disclaimer">⚠️ This exam has no educational value whatsoever.</p>
+            <div id="bank-error" class="bank-notice hidden" role="alert">
+                ⚠️ QUESTION BANK COULD NOT LOAD<br>
+                Please run the project using a local server:<br>
+                <code>python3 -m http.server 8000</code>
+            </div>
+            <div id="bank-short" class="bank-notice hidden" role="alert">
+                ⚠️ NOT ENOUGH QUESTIONS<br>
+                The exam requires at least 8 valid questions.
+            </div>
+        </div>
+    </div>
+
+    <!-- EXAM SCREEN -->
+    <div id="exam-screen" class="screen">
+        <div class="exam-card exam-card-main" id="exam-card">
+            <div class="progress-container">
+                <div class="progress-text">
+                    <span id="question-counter">QUESTION 1 / 8</span>
+                    <span id="question-percent" class="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="question-container" class="question-container">
+                <div class="question-badge" id="question-number">Q1</div>
+                <h2 id="question-text" class="question-text"></h2>
+                <div id="options-container" class="options-container"></div>
+            </div>
+
+            <div id="reaction-card" class="reaction-card hidden" role="status" aria-live="polite">
+                <div class="reaction-emoji" id="reaction-emoji">😂</div>
+                <div class="reaction-title">COMPUTER COMMENT</div>
+                <p id="reaction-text" class="reaction-text"></p>
+            </div>
+
+            <button id="next-btn" class="btn btn-primary hidden">
+                <span class="btn-label">NEXT QUESTION →</span>
+                <span class="btn-spinner hidden"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MYSTERY FILE OVERLAY -->
+    <div id="mystery-overlay" class="mystery-overlay">
+        <div class="mystery-modal">
+            <div id="mystery-detected" class="mystery-stage">
+                <div class="mystery-alert">⚠️ UNEXPECTED FILE DETECTED</div>
+                <div class="mystery-file">
+                    <span class="mystery-file-icon">📄</span>
+                    <code>mystery_exam_file.txt</code>
+                </div>
+                <p class="mystery-hint">A file has appeared inside your exam…</p>
+                <div class="mystery-actions">
+                    <button id="mystery-open-btn" class="btn btn-primary">OPEN FILE 👀</button>
+                    <button id="mystery-skip-btn" class="btn btn-ghost">IGNORE</button>
+                </div>
+            </div>
+            <div id="mystery-content" class="mystery-stage hidden">
+                <div class="mystery-title">📁 SECRET FILE FOUND</div>
+                <p class="mystery-text">നിങ്ങൾ ഇത് തുറക്കുമെന്ന് ഞങ്ങൾക്ക് അറിയാമായിരുന്നു. 👀<br>പക്ഷേ എന്തിനാണ് തുറന്നത് എന്ന് ഞങ്ങൾക്കും അറിയില്ല. 😭😂</p>
+                <button id="mystery-continue-btn" class="btn btn-primary">CONTINUE EXAM →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROCESSING SCREEN -->
+    <div id="submission-screen" class="screen">
+        <div class="exam-card processing-card" id="processing-card">
+            <div class="processing-ring"><div class="inner-ring"></div></div>
+            <h2 id="processing-title" class="processing-title">ANALYZING ANSWERS...</h2>
+            <p id="processing-message" class="processing-message">Analyzing answers... 🧠</p>
+            <div class="processing-bar"><div id="processing-fill" class="processing-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- ERROR SCREEN -->
+    <div id="error-screen" class="screen">
+        <div class="exam-card error-card">
+            <div class="error-content" id="error-content">
+                <div class="error-icon">⚠️</div>
+                <h1 class="error-title glitch" data-text="PROCESSING FAILED">PROCESSING FAILED</h1>
+                <h2 class="error-code glitch" data-text="ERROR 404">ERROR 404</h2>
+                <h3 class="error-subtitle">ANSWER KEY NOT FOUND</h3>
+                <div class="error-details hidden">
+                    <p>We searched everywhere.</p>
+                    <p>We checked the computer.</p>
+                    <p>We checked the internet.</p>
+                    <p>We checked your answers.</p>
+                </div>
+                <div class="error-punchline hidden">
+                    <p>There is no answer key. 💀</p>
+                </div>
+                <button id="error-continue-btn" class="btn btn-primary hidden">CONTINUE ANYWAY →</button>
+            </div>
+            <div class="scanlines"></div>
+        </div>
+    </div>
+
+    <!-- PASSED SCREEN -->
+    <div id="passed-screen" class="screen">
+        <div class="exam-card passed-card">
+            <div class="passed-content">
+                <div class="celebration-icon">🎉</div>
+                <h1 class="passed-title">CONGRATULATIONS!</h1>
+                <h2 class="passed-subtitle">YOU PASSED.</h2>
+                <p class="passed-reason">Because we forgot to make the exam. 💀</p>
+                <button id="certificate-btn" class="btn btn-primary btn-glow">🏆 GET MY USELESS CERTIFICATE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CERTIFICATE SCREEN -->
+    <div id="certificate-screen" class="screen">
+        <div class="certificate-wrap">
+            <div class="certificate" id="certificate">
+                <div class="certificate-shine"></div>
+                <div class="certificate-border">
+                    <div class="certificate-content">
+                        <div class="certificate-header">
+                            <div class="certificate-icon">🏆</div>
+                            <h1>CERTIFICATE OF USELESSNESS</h1>
+                        </div>
+                        <div class="certificate-body">
+                            <p class="certificate-text">This certifies that</p>
+                            <h2 class="certificate-name">YOU</h2>
+                            <p class="certificate-text">successfully completed an examination that had absolutely no purpose.</p>
+                        </div>
+                        <div class="certificate-footer">
+                            <h3>🎓 CONGRATULATIONS!</h3>
+                            <p>You achieved absolutely nothing.</p>
+                        </div>
+                        <div class="certificate-date">
+                            <p>Date: <span id="certificate-date"></span></p>
+                            <p>Exam ID: USELESS-<span id="exam-id"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="retake-btn" class="btn btn-primary">TAKE THE EXAM AGAIN</button>
+        </div>
+    </div>
+
+    <!-- Question bank is loaded via fetch() in script.js (needs a local server) -->
+    <script src="script.js"></script>
+</body>
+</html>
