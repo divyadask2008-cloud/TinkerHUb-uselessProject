@@ -80,8 +80,11 @@ Not applicable — there is no physical build. The "product" is the web app show
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Walkthrough shows: starting the exam, answering absurd questions with reactions, the mystery file appearing, the dramatic processing and ERROR 404, the certificate, then retaking with a fresh set. A ready-to-upload demo-video.mp4 is included in the project folder.*
+<video controls width="640">
+  <source src="demo-video.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+*Screencast of the exam being taken live (recorded with GNOME Screen Recorder).*
 
 # Additional Demos
 - Live preview: run `python3 -m http.server 8000` and open http://localhost:8000
